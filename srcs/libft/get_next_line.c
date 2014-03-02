@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: realves <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jmancero <jmancero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/11 05:00:40 by realves           #+#    #+#             */
-/*   Updated: 2014/02/27 19:57:27 by realves          ###   ########.fr       */
+/*   Created: 2013/12/03 22:08:24 by jmancero          #+#    #+#             */
+/*   Updated: 2014/03/02 20:50:27 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 #include "../../includes/game.h"
 
 static	t_read		*ft_freeread(t_read *red, t_read *prev, t_read **start)

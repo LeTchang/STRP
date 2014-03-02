@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:40:03 by realves           #+#    #+#             */
-/*   Updated: 2014/03/01 18:37:20 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/02 20:33:01 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # include "struct_env.h"
 # include "struct_img.h"
 # include "struct_map.h"
+# include "get_next_line.h"
 
 /*
 **  Define

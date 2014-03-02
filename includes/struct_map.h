@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/27 19:03:53 by realves           #+#    #+#             */
-/*   Updated: 2014/02/27 19:46:39 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/02 17:22:52 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct		s_map
 	int				w;
 	int				h;
 	int				*map;
+	int				*back;
 	char			*name;
 }					t_map;
 

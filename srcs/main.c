@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 16:32:17 by realves           #+#    #+#             */
-/*   Updated: 2014/03/01 18:51:56 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/02 21:46:14 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,15 @@ static int	key_release_event(int keycode, t_env *e)
 static int		loop_hook(t_env *e)
 {
 	int			nb;
+
+	nb = e->map.map[e->y * e->map.w + e->x];
+	if (e->img_tab[nb].teleport != NULL)
+	{
+		e->x = e->img_tab[nb].teleport_x;
+		e->y = e->img_tab[nb].teleport_y;
+		free(e->map.map);
+		gm_init_map(e, e->img_tab[nb].teleport);
+	}
 
 	if (e->up_arrow == 1)
 	{
@@ -171,7 +180,6 @@ int		main()
 	e.speed = 5000;
 	gm_init_mlx(&e);
 	e.red = gm_init_img(&e, "./img/red/red_up_1.xpm", 16, 32);
-	e.img_tab[0] = gm_init_img(&e, "./img/black.xpm", 16, 16);
 	gm_init_map(&e, "./map/map_1.map");
 	mlx_hook(e.win_ptr, 2, 1, &key_press_event, &e);
 	mlx_hook(e.win_ptr, 3, 2, &key_release_event, &e);

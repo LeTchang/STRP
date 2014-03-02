@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: realves <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jmancero <jmancero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/11 05:00:29 by realves           #+#    #+#             */
-/*   Updated: 2014/01/15 18:34:16 by realves          ###   ########.fr       */
+/*   Created: 2013/12/03 01:49:32 by jmancero          #+#    #+#             */
+/*   Updated: 2014/03/02 20:54:21 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# include <unistd.h>
-# include <stdlib.h>
 # define BUFF_SIZE 4096
 
 int					get_next_line(int const fd, char **line);
