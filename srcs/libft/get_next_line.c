@@ -6,130 +6,98 @@
 /*   By: jmancero <jmancero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 22:08:24 by jmancero          #+#    #+#             */
-/*   Updated: 2014/03/02 20:50:27 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/22 15:48:37 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/game.h"
 
-static	t_read		*ft_freeread(t_read *red, t_read *prev, t_read **start)
+static char	*ft_my_realloc(char *s, unsigned int start, size_t len)
 {
-	if (!prev)
-		*start = red->next;
-	else
-		prev->next = red->next;
-	free(red->read);
-	free(red);
-	if (!prev)
-		return (*start);
-	else
-		return (prev->next);
+	char			*substr;
+	size_t			j;
+
+	substr = (char *)malloc(sizeof(char) * (len + 1));
+	substr[len] = '\0';
+	if (substr == NULL || !s)
+		return (NULL);
+	j = 0;
+	while (j < len)
+	{
+		substr[j] = s[start];
+		j++;
+		start++;
+	}
+	free(s);
+	return (substr);
 }
 
-static	t_read		*ft_newread(int fd)
+static int	if_mini(char **mini, char **line, int *i)
 {
-	t_read			*red;
-	void			*tmp;
-	int				ret;
+	char			*j;
+	unsigned int	k;
 
-	if (!(red = (t_read *)malloc(sizeof(t_read))))
-		return (NULL);
-	if (!(tmp = malloc(sizeof(char) * BUFF_SIZE)))
+	if (!(j = ft_strchr(*mini, '\n')))
 	{
-		free(red);
-		return (NULL);
+		*line = ft_my_realloc(*line, 0, (*i = *i + ft_strlen(*mini)));
+		ft_strncat(*line, *mini, ft_strlen(*mini));
+		*mini = ft_strnew(0);
 	}
-	if ((ret = read(fd, tmp, BUFF_SIZE)) < 0)
+	else
 	{
-		free(red);
-		free(tmp);
-		return (NULL);
+		*line = ft_my_realloc(*line, 0, (*i = *i + (k = j - *mini)));
+		ft_strncat(*line, *mini, k);
+		*mini = *mini + k + 1;
+		return (1);
 	}
-	red->read = (char *)tmp;
-	red->fd = fd;
-	red->size = ret;
-	red->next = NULL;
-	red->index = 0;
-	return (red);
+	return (0);
 }
 
-static	int			ft_print(int n, t_read **tab, t_read **s, char** l)
+static int	if_no_mini(char **buff, char **line, int *i, char **mini)
 {
-	char			*tmpstr;
-	int				index;
+	char			*j;
+	unsigned int	k;
 
-	if (!tab[0])
-		return (-1);
-	index = (tab[0])->index;
-	if (n == -1 || !(tmpstr = (char *)malloc(sizeof (char) * (n + 1))))
-		return (-1);
-	*l = tmpstr;
-	while (n--)
+	if (!(j = ft_strchr(*buff, '\n')))
 	{
-		*tmpstr++ = (tab[0])->read[index++];
-		if (index == (tab[0])->size)
+		*line = ft_my_realloc(*line, 0, (*i = *i + BUFF_SIZE));
+		ft_strncat(*line, *buff, BUFF_SIZE);
+	}
+	else
+	{
+		*line = ft_my_realloc(*line, 0, (*i = *i + (k = j - *buff)));
+		ft_strncat(*line, *buff, k);
+		*mini = ft_strsub(*buff, k + 1, BUFF_SIZE - k - 1);
+		return (1);
+	}
+	return (0);
+}
+
+int			get_next_line(int const fd, char **line)
+{
+	char			*buff;
+	int				i;
+	int				m;
+	static char		*mini = "\0";
+
+	i = 0;
+	m = 1;
+	*line = (char *)malloc(sizeof(char) * 1);
+	buff = (char *)malloc(sizeof(char) * (BUFF_SIZE + 1));
+	if (line == NULL || fd < 0 || *line == NULL || buff == NULL)
+		return (-1);
+	**line = '\0';
+	while (m != 0)
+	{
+		if (*mini && if_mini(&mini, line, &i) == 1)
+			return (1);
+		if (!(*mini) && (m = read(fd, buff, BUFF_SIZE)) && (buff[m] = 0) == 0)
 		{
-			tab[0] = ft_freeread(tab[0], tab[1], s);
-			index = 0;
+			if (if_no_mini(&buff, line, &i, &mini) == 1)
+				return (1);
 		}
 	}
-	*tmpstr = 0;
-	if (!tab[0] || (index == tab[0]->size && tab[0]->size < BUFF_SIZE))
-		return (0);
-	tab[0]->index = index + 1;
-	if (tab[0]->index == tab[0]->size)
-		tab[0] = ft_freeread(tab[0], tab[1], s);
-	return (1);
-}
-
-static	int			ft_findendl(int fd, t_read *red)
-{
-	int				index;
-	int				size;
-	t_read			*tmplst;
-
-	size = 0;
-	index = red->index;
-	while (red->read[index] != '\n' && index < red->size)
-	{
-		index++;
-		size++;
-		if (index == red->size && red->size == BUFF_SIZE)
-		{
-			if (!(tmplst = ft_newread(fd)))
-				return (-1);
-			tmplst->next = red->next;
-			red->next = tmplst;
-			red = tmplst;
-			index = 0;
-		}
-	}
-	return (size);
-}
-
-int					get_next_line(int fd, char **line)
-{
-	static t_read	*start = NULL;
-	t_read			*red;
-	t_read			*prevtmp;
-	t_read			*tab[2];
-
-	if (fd < 0)
-		return (-1);
-	prevtmp = NULL;
-	if (!start)
-		start = ft_newread(fd);
-	red = start;
-	while (red->fd != fd)
-	{
-		if (!(red->next))
-			red->next = ft_newread(fd);
-		prevtmp = red;
-		red = red->next;
-	}
-	if (!red || !start)
-		return (-1);
-	tab[0] = red;
-	tab[1] = prevtmp;
-	return (ft_print(ft_findendl(fd, red), tab, &start, line));
+	if (**line)
+		return (1);
+	return (0);
 }

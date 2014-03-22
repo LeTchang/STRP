@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:54:28 by realves           #+#    #+#             */
-/*   Updated: 2014/03/01 18:38:03 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/22 19:41:37 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "struct_img.h"
 # include "struct_map.h"
 
-# define NB_TEXTURE 1000
+# define NB_TEXTURE 100
 
 typedef struct			s_env
 {
@@ -27,6 +27,8 @@ typedef struct			s_env
 	t_map				map;
 	void				*mlx_ptr;
 	void				*win_ptr;
+	int					red_posx;
+	int					red_posy;
 	int					up_arrow;
 	int					down_arrow;
 	int					left_arrow;
@@ -34,7 +36,6 @@ typedef struct			s_env
 	int					x;
 	int					y;
 	int					sens;
-	int					frame;
 	int					speed;
 }						t_env;
 

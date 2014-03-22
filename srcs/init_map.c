@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/27 19:10:24 by realves           #+#    #+#             */
-/*   Updated: 2014/03/02 21:48:18 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/22 15:58:33 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,5 @@ void		gm_init_map(t_env *e, char *path)
 			init_texture(e, line);
 		line_nb++;
 	}
+	close(fd);
 }

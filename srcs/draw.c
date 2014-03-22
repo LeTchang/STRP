@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 14:06:07 by realves           #+#    #+#             */
-/*   Updated: 2014/02/28 14:47:59 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/22 22:53:06 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void			gm_pixel_put_img(t_img *img, int tab[5])
 {
-	if (tab[1] * img->size_line + img->bpp * tab[0] <= img->max_size 
-			&& tab[1] * img->size_line + img->bpp * tab[0] >= 0)
+	if (tab[0] < WIDTH && tab[1] < HEIGHT && tab[0] >= 0 && tab[1] >= 0)
 	{
 		img->img[tab[1] * img->size_line + img->bpp * tab[0]] = tab[4];
 		img->img[tab[1] * img->size_line + img->bpp * tab[0] + 1] = tab[3];
@@ -77,5 +76,49 @@ void		gm_draw_img(t_img *screen, t_img *img, int x, int y)
 			j++;
 		}
 		i++;
+	}
+}
+
+void		gm_draw_half(t_img *screen, t_img *img, int tab[4])
+{
+	int		t[5];
+	int		val[5];
+
+	val[1] = 0;
+	val[2] = 0;
+	if (tab[2] == 1)
+		val[3] = img->width;
+	else if (tab[2] == 2)
+	{
+		val[3] = tab[3];
+		val[4] = img->height;
+	}
+	else if (tab[2] == 3)
+	{
+		val[1] = 16 - tab[3];
+		val[3] = img->width;
+		val[4] = img->height;
+	}
+	else
+	{
+		val[2] = 16 - tab[3];
+		val[3] = img->width;
+		val[4] = img->height;
+	}
+	while (val[1] < val[4])
+	{
+		val[0] = val[2];
+		while (val[0] < val[3])
+		{
+			t[0] = tab[0] + val[0];
+			t[1] = tab[1] + val[1];
+			t[2] = img->img[val[1] * img->size_line + 4 * val[0] + 2];
+			t[3] = img->img[val[1] * img->size_line + 4 * val[0] + 1];
+			t[4] = img->img[val[1] * img->size_line + 4 * val[0]];
+			if (!test_transpa(t[2], t[3], t[4]))
+				gm_draw_ratio(screen, t);
+			val[0]++;
+		}
+		val[1]++;
 	}
 }
