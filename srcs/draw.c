@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 14:06:07 by realves           #+#    #+#             */
-/*   Updated: 2014/03/22 22:53:06 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/23 18:24:01 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,10 @@ void		gm_draw_half(t_img *screen, t_img *img, int tab[4])
 	val[1] = 0;
 	val[2] = 0;
 	if (tab[2] == 1)
+	{
 		val[3] = img->width;
+		val[4] = tab[3];
+	}
 	else if (tab[2] == 2)
 	{
 		val[3] = tab[3];
