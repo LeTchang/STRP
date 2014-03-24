@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 16:32:17 by realves           #+#    #+#             */
-/*   Updated: 2014/03/23 20:29:37 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/24 20:35:06 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,23 @@ static int	key_press_event(int keycode, t_env *e)
 {
 	if (keycode == UP)
 	{
+		gm_putallarrow(e, 0);
 		e->up_arrow = 1;
-		e->down_arrow = 0;
-		e->left_arrow = 0;
-		e->right_arrow = 0;
 	}
 	if (keycode == DOWN)
 	{
+		gm_putallarrow(e, 0);
 		e->down_arrow = 1;
-		e->up_arrow = 0;
-		e->left_arrow = 0;
-		e->right_arrow = 0;
 	}
 	if (keycode == LEFT)
 	{
+		gm_putallarrow(e, 0);
 		e->left_arrow = 1;
-		e->right_arrow = 0;
-		e->up_arrow = 0;
-		e->down_arrow = 0;
 	}
 	if (keycode == RIGHT)
 	{
+		gm_putallarrow(e, 0);
 		e->right_arrow = 1;
-		e->left_arrow = 0;
-		e->up_arrow = 0;
-		e->down_arrow = 0;
 	}
 	if (keycode == ESCAPE)
 		exit(0);
@@ -70,19 +62,7 @@ static int		loop_hook(t_env *e)
 
 	nb = e->map.map[e->y * e->map.w + e->x];
 	if (e->img_tab[nb].teleport != NULL)
-	{
-		e->trans = gm_init_img(e, "./img/transition/1/trans1.xpm", 336, 272);
-		gm_gene_map(e, 0, 0);
-		gm_draw_img(&(e->screen), &(e->red), e->red_posx, e->red_posy);
-		gm_draw_img(&(e->screen), &(e->trans), 0, 0);
-		mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->screen.ptr, 0, 0);
-		usleep(500000);
-
-		e->x = e->img_tab[nb].teleport_x;
-		e->y = e->img_tab[nb].teleport_y;
-		free(e->map.map);
-		gm_init_map(e, e->img_tab[nb].teleport);
-	}
+		gm_trans(e, nb);
 	if (e->up_arrow == 1)
 		gm_up(e);
 	if (e->down_arrow == 1)

@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:54:28 by realves           #+#    #+#             */
-/*   Updated: 2014/03/23 20:01:54 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/24 21:34:10 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@
 # include "struct_img.h"
 # include "struct_map.h"
 
-# define NB_TEXTURE 100
+# define NB_TEXTURE 1000
 
 typedef struct			s_env
 {
 	t_img				screen;
 	t_img				trans;
 	t_img				red;
+	t_img				
 	t_img				img_tab[NB_TEXTURE];
 	t_map				map;
 	void				*mlx_ptr;

@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_reverse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: realves <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/23 14:05:51 by realves           #+#    #+#             */
-/*   Updated: 2014/03/24 21:16:18 by realves          ###   ########.fr       */
+/*   Created: 2013/12/01 18:03:52 by realves           #+#    #+#             */
+/*   Updated: 2014/03/24 21:09:34 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/game.h"
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+void	ft_reverse(char *str)
 {
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
+	char	tmp;
 
-	i = 0;
-	j = ft_strlen(s1);
-	while (s2[i] != '\0' && n > 0)
+	if (str != NULL)
 	{
-		s1[j] = s2[i];
-		i++;
-		j++;
-		n--;
+		i = 0;
+		j = ft_strlen(str) - 1;
+		while (i < j)
+		{
+			tmp = str[i];
+			str[i] = str[j];
+			str[j] = tmp;
+			i++;
+			j--;
+		}
 	}
-	s1[j] = '\0';
-	return (s1);
 }

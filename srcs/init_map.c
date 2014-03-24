@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/27 19:10:24 by realves           #+#    #+#             */
-/*   Updated: 2014/03/22 15:58:33 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/24 20:29:56 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static void	init_texture(t_env *e, char *line)
 		e->img_tab[ft_atoi(split[0])].teleport = split[5];
 		e->img_tab[ft_atoi(split[0])].teleport_x = ft_atoi(split[6]);
 		e->img_tab[ft_atoi(split[0])].teleport_y = ft_atoi(split[7]);
+		e->img_tab[ft_atoi(split[0])].teleport_sens = ft_atoi(split[8]);
+		e->img_tab[ft_atoi(split[0])].teleport_trans = ft_atoi(split[9]);
 	}
 	else
 		e->img_tab[ft_atoi(split[0])].teleport = NULL;

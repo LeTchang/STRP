@@ -72,6 +72,6 @@
 29 ./img/pokecenter_1/poke_20.xpm 1 0 0
 30 ./img/pokecenter_1/poke_21.xpm 1 0 0
 31 ./img/pokecenter_1/poke_22.xpm 1 0 0
-32 ./img/pokecenter_1/poke_23.xpm 0 0 1 ./map/map_3.map 16 6
+32 ./img/pokecenter_1/poke_23.xpm 0 0 1 ./map/map_3.map 11 6 3 1
 33 ./img/pokecenter_1/poke_24.xpm 1 0 0
 34 ./img/pokecenter_1/poke_25.xpm 1 0 0

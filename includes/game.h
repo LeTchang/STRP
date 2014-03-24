@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:40:03 by realves           #+#    #+#             */
-/*   Updated: 2014/03/22 21:27:00 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/24 21:32:56 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,16 @@
 int				get_next_line(int fd, char **line);
 int				ft_strlen(const char *str);
 int				ft_atoi(const char *str);
+char			*ft_itoa(int n);
 char			*ft_strcpy(char *s1, const char *s2);
 char			*ft_strchr(const char *s, int c);
+char			*ft_strcat(char *s1, const char *s2);
 char			*ft_strncat(char *s1, const char *s2, size_t n);
 char			*ft_strnew(size_t size);
 char			*ft_strdup(const char *s1);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			**ft_strsplit(char const *s, char c);
+void			ft_reverse(char *str);
 
 /*
 ** Prototypes Game
@@ -79,14 +82,21 @@ void			gm_draw_ratio(t_img *img, int tab[5]);
 void			gm_draw_img(t_img *screen, t_img *img, int x, int y);
 void			gm_draw_half(t_img *screen, t_img *img, int tab[4]);
 void			gm_draw_halfline(t_env *e, int sens, int nb_px);
+void			gm_trans(t_env *e, int nb);
 void			gm_up(t_env *e);
 void			gm_down(t_env *e);
 void			gm_left(t_env *e);
 void			gm_right(t_env *e);
-void			gm_init_mlx(t_env *e);
 void			gm_error(int nb, char *reason);
 void			gm_init_map(t_env *e, char *path);
 void			gm_gene_map(t_env *e, int pos_x, int pos_y);
+
+/*
+**	Prototypes Utilities
+*/
+
+void			gm_putallarrow(t_env *e, int nb);
+void			gm_init_mlx(t_env *e);
 void			gm_init_screen(void *mlx, int width, int height, t_img *img);
 t_img			gm_init_img(t_env *env, char *path, int width, int height);
 
