@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:47:25 by realves           #+#    #+#             */
-/*   Updated: 2014/03/24 20:29:33 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/24 22:38:51 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct		s_img
 	int				height;
 	int				max_size;
 	int				solid;
-	int				sens;
 	int				teleport_x;
 	int				teleport_y;
 	int				teleport_sens;

@@ -6,7 +6,7 @@
 /*   By: realves <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 21:16:58 by realves           #+#    #+#             */
-/*   Updated: 2014/03/23 19:45:34 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/25 00:23:38 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	gm_up(t_env *e)
 		e->red = gm_init_img(e, "./img/red/red_down_3.xpm", 16, 32);
 		gm_draw_img(&(e->screen), &(e->red), e->red_posx, e->red_posy);
 		mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->screen.ptr, 0, 0);
-		e->red = gm_init_img(e, "./img/red/red_down_1.xpm", 16, 32);
 		usleep(e->speed);
 		e->y -= 1;
 	}
+	e->red = gm_init_img(e, "./img/red/red_down_1.xpm", 16, 32);
 }
 
 void	gm_down(t_env *e)
@@ -66,10 +66,10 @@ void	gm_down(t_env *e)
 		e->red = gm_init_img(e, "./img/red/red_up_3.xpm", 16, 32);
 		gm_draw_img(&(e->screen), &(e->red), e->red_posx, e->red_posy);
 		mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->screen.ptr, 0, 0);
-		e->red = gm_init_img(e, "./img/red/red_up_1.xpm", 16, 32);
 		usleep(e->speed);
 		e->y += 1;
 	}
+	e->red = gm_init_img(e, "./img/red/red_up_1.xpm", 16, 32);
 }
 
 void	gm_left(t_env *e)
@@ -96,10 +96,10 @@ void	gm_left(t_env *e)
 		e->red = gm_init_img(e, "./img/red/red_left_3.xpm", 16, 32);
 		gm_draw_img(&(e->screen), &(e->red), e->red_posx, e->red_posy);
 		mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->screen.ptr, 0, 0);
-		e->red = gm_init_img(e, "./img/red/red_left_1.xpm", 16, 32);
 		usleep(e->speed);
 		e->x -= 1;
 	}
+	e->red = gm_init_img(e, "./img/red/red_left_1.xpm", 16, 32);
 }
 
 void	gm_right(t_env *e)
@@ -126,8 +126,8 @@ void	gm_right(t_env *e)
 		e->red = gm_init_img(e, "./img/red/red_right_3.xpm", 16, 32);
 		gm_draw_img(&(e->screen), &(e->red), e->red_posx, e->red_posy);
 		mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->screen.ptr, 0, 0);
-		e->red = gm_init_img(e, "./img/red/red_right_1.xpm", 16, 32);
 		usleep(e->speed);
 		e->x += 1;
 	}
+	e->red = gm_init_img(e, "./img/red/red_right_1.xpm", 16, 32);
 }
