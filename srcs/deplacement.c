@@ -6,7 +6,7 @@
 /*   By: realves <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 21:16:58 by realves           #+#    #+#             */
-/*   Updated: 2014/03/25 00:23:38 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/25 23:11:27 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ void	gm_up(t_env *e)
 	int	nb;
 
 	nb = e->map.map[(e->y - 1) * e->map.w + e->x];
-	if (e->img_tab[nb].solid == 0)
+	if (e->img_tab[nb].solid == 0 &&
+			(e->img_tab[nb].sens == 0 || e->img_tab[nb].sens == 1 ||
+			e->img_tab[nb].sens == 5 || e->img_tab[nb].sens == 6 ||
+			e->img_tab[nb].sens == 7 || e->img_tab[nb].sens == 12 ||
+			e->img_tab[nb].sens == 13 || e->img_tab[nb].sens == 14))
 	{
 		gm_gene_map(e, 0, 4);
 		gm_draw_halfline(e, 1, 4);
@@ -47,7 +51,11 @@ void	gm_down(t_env *e)
 	int	nb;
 
 	nb = e->map.map[(e->y + 1) * e->map.w + e->x];
-	if (e->img_tab[nb].solid == 0)
+	if (e->img_tab[nb].solid == 0 &&
+			(e->img_tab[nb].sens == 0 || e->img_tab[nb].sens == 3 ||
+			e->img_tab[nb].sens == 6 || e->img_tab[nb].sens == 8 ||
+			e->img_tab[nb].sens == 10 || e->img_tab[nb].sens == 11 ||
+			e->img_tab[nb].sens == 12 || e->img_tab[nb].sens == 14))
 	{
 		gm_gene_map(e, 0, -4);
 		gm_draw_halfline(e, 3, 4);
@@ -77,7 +85,11 @@ void	gm_left(t_env *e)
 	int	nb;
 
 	nb = e->map.map[e->y * e->map.w + (e->x - 1)];
-	if (e->img_tab[nb].solid == 0)
+	if (e->img_tab[nb].solid == 0 &&
+			(e->img_tab[nb].sens == 0 || e->img_tab[nb].sens == 2 ||
+			e->img_tab[nb].sens == 5 || e->img_tab[nb].sens == 8 ||
+			e->img_tab[nb].sens == 9 || e->img_tab[nb].sens == 11 ||
+			e->img_tab[nb].sens == 13 || e->img_tab[nb].sens == 14))
 	{
 		gm_gene_map(e, 4, 0);
 		gm_draw_halfline(e, 2, 4);
@@ -107,7 +119,11 @@ void	gm_right(t_env *e)
 	int	nb;
 
 	nb = e->map.map[e->y * e->map.w + (e->x + 1)];
-	if (e->img_tab[nb].solid == 0)
+	if (e->img_tab[nb].solid == 0 &&
+			(e->img_tab[nb].sens == 0 || e->img_tab[nb].sens == 4 ||
+			e->img_tab[nb].sens == 7 || e->img_tab[nb].sens == 9 ||
+			e->img_tab[nb].sens == 10 || e->img_tab[nb].sens == 11 ||
+			e->img_tab[nb].sens == 12 || e->img_tab[nb].sens == 13))
 	{
 		gm_gene_map(e, -4, 0);
 		gm_draw_halfline(e, 4, 4);

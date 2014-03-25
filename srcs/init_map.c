@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/27 19:10:24 by realves           #+#    #+#             */
-/*   Updated: 2014/03/25 00:24:40 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/25 23:35:38 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,18 @@ static void	draw_texture(t_img *tileset, t_img *img, int x, int y)
 	}
 }
 
+static void	free_split(char **split)
+{
+	int		i;
+
+	i = 0;
+	while (split[i] != NULL)
+	{
+		free(split[i]);
+		i++;
+	}
+}
+
 static void	init_texture(t_env *e, char *line)
 {
 	char		**split;
@@ -52,16 +64,18 @@ static void	init_texture(t_env *e, char *line)
 			&(e->img_tab[ft_atoi(split[0])]), ft_atoi(split[2]),
 			ft_atoi(split[3]));
 	e->img_tab[ft_atoi(split[0])].solid = ft_atoi(split[4]);
-	if (split[5][0] != '0')
+	e->img_tab[ft_atoi(split[0])].sens = ft_atoi(split[5]);
+	if (split[6][0] != '0')
 	{
-		e->img_tab[ft_atoi(split[0])].teleport = split[6];
-		e->img_tab[ft_atoi(split[0])].teleport_x = ft_atoi(split[7]);
-		e->img_tab[ft_atoi(split[0])].teleport_y = ft_atoi(split[8]);
-		e->img_tab[ft_atoi(split[0])].teleport_sens = ft_atoi(split[9]);
-		e->img_tab[ft_atoi(split[0])].teleport_trans = ft_atoi(split[10]);
+		e->img_tab[ft_atoi(split[0])].teleport = split[7];
+		e->img_tab[ft_atoi(split[0])].teleport_x = ft_atoi(split[8]);
+		e->img_tab[ft_atoi(split[0])].teleport_y = ft_atoi(split[9]);
+		e->img_tab[ft_atoi(split[0])].teleport_sens = ft_atoi(split[10]);
+		e->img_tab[ft_atoi(split[0])].teleport_trans = ft_atoi(split[11]);
 	}
 	else
 		e->img_tab[ft_atoi(split[0])].teleport = NULL;
+	free(split);
 }
 
 static void	init_tileset(t_env *e, char *line)
@@ -71,6 +85,7 @@ static void	init_tileset(t_env *e, char *line)
 	split = ft_strsplit(line, ' ');
 	e->tileset[ft_atoi(split[0])] = gm_init_img(e, split[1],
 			ft_atoi(split[2]), ft_atoi(split[3]));
+	free(split);
 }
 
 static void	init_back(t_env *e, char *line, int line_nb)
@@ -85,6 +100,8 @@ static void	init_back(t_env *e, char *line, int line_nb)
 		e->map.back[j + e->map.w * (line_nb - e->map.h - 5)] = ft_atoi(spli[j]);
 		j++;
 	}
+	free_split(spli);
+	free(spli);
 }
 
 static void	init_map(t_env *e, char *line, int line_nb)
@@ -99,6 +116,8 @@ static void	init_map(t_env *e, char *line, int line_nb)
 		e->map.map[j + e->map.w * (line_nb - 4)] = ft_atoi(split[j]);
 		j++;
 	}
+	free_split(split);
+	free(split);
 }
 
 static void	init_define(t_env *e, char *line, int line_nb)
@@ -112,6 +131,8 @@ static void	init_define(t_env *e, char *line, int line_nb)
 		e->map.h = ft_atoi(split[1]);
 	else if (line_nb == 2)
 		e->map.name = split[1];
+	free_split(split);
+	free(split);
 }
 
 void		gm_init_map(t_env *e, char *path)
@@ -156,6 +177,7 @@ void		gm_init_map(t_env *e, char *path)
 				init_texture(e, line);
 		}
 		line_nb++;
+		free(line);
 	}
 	close(fd);
 }
