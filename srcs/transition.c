@@ -6,7 +6,7 @@
 /*   By: realves <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/23 20:18:16 by realves           #+#    #+#             */
-/*   Updated: 2014/03/25 23:35:37 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/26 18:16:18 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ static void	trans_3(t_env *e, int nb)
 		e->red = gm_init_img(e, "./img/red/red_up_1.xpm", 16, 32);
 	else
 		e->red = gm_init_img(e, "./img/red/red_right_1.xpm", 16, 32);
+	gm_putallarrow(e, 0);
 }
 
 static void	trans_4(t_env *e, int nb)
@@ -209,6 +210,7 @@ static void	trans_4(t_env *e, int nb)
 		e->red = gm_init_img(e, "./img/red/red_up_1.xpm", 16, 32);
 	else
 		e->red = gm_init_img(e, "./img/red/red_right_1.xpm", 16, 32);
+	gm_putallarrow(e, 0);
 }
 
 void		gm_trans(t_env *e, int nb)
