@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:54:28 by realves           #+#    #+#             */
-/*   Updated: 2014/03/24 21:40:25 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/26 22:35:31 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct			s_env
 	int					x;
 	int					y;
 	int					sens;
-	int					speed;
+	int					sprint;
 }						t_env;
 
 #endif /* !STRUCT_ENV_H */
