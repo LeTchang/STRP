@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/27 19:10:24 by realves           #+#    #+#             */
-/*   Updated: 2014/03/25 23:35:38 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/29 00:51:42 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,21 @@ static void	init_texture(t_env *e, char *line)
 	char		**split;
 
 	split = ft_strsplit(line, ' ');
+	printf("%s\n", split[0]);
 	gm_init_screen(e->mlx_ptr, 16, 16, &(e->img_tab[ft_atoi(split[0])]));
 	draw_texture(&(e->tileset[ft_atoi(split[1])]),
 			&(e->img_tab[ft_atoi(split[0])]), ft_atoi(split[2]),
 			ft_atoi(split[3]));
 	e->img_tab[ft_atoi(split[0])].solid = ft_atoi(split[4]);
 	e->img_tab[ft_atoi(split[0])].sens = ft_atoi(split[5]);
-	if (split[6][0] != '0')
+	e->img_tab[ft_atoi(split[0])].under = ft_atoi(split[6]);
+	if (split[7][0] != '0')
 	{
-		e->img_tab[ft_atoi(split[0])].teleport = split[7];
-		e->img_tab[ft_atoi(split[0])].teleport_x = ft_atoi(split[8]);
-		e->img_tab[ft_atoi(split[0])].teleport_y = ft_atoi(split[9]);
-		e->img_tab[ft_atoi(split[0])].teleport_sens = ft_atoi(split[10]);
-		e->img_tab[ft_atoi(split[0])].teleport_trans = ft_atoi(split[11]);
+		e->img_tab[ft_atoi(split[0])].teleport = split[8];
+		e->img_tab[ft_atoi(split[0])].teleport_x = ft_atoi(split[9]);
+		e->img_tab[ft_atoi(split[0])].teleport_y = ft_atoi(split[10]);
+		e->img_tab[ft_atoi(split[0])].teleport_sens = ft_atoi(split[11]);
+		e->img_tab[ft_atoi(split[0])].teleport_trans = ft_atoi(split[12]);
 	}
 	else
 		e->img_tab[ft_atoi(split[0])].teleport = NULL;

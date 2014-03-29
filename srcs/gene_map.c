@@ -6,13 +6,13 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 14:41:26 by realves           #+#    #+#             */
-/*   Updated: 2014/03/25 00:24:42 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/28 19:06:58 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/game.h"
 
-void		gm_gene_map(t_env *e, int pos_x, int pos_y)
+void		gm_gene_map(t_env *e, int pos_x, int pos_y, int under)
 {
 	int		x;
 	int		y;
@@ -30,12 +30,22 @@ void		gm_gene_map(t_env *e, int pos_x, int pos_y)
 		{
 			if (x >= 0 && y >= 0 && x < e->map.w && y < e->map.h)
 			{
-				n = e->map.back[y * e->map.w + x];
-				gm_draw_img(&(e->screen), &(e->img_tab[n]), i * 16 + 1 + pos_x, j * 16 + 1 + pos_y);
-				n = e->map.map[y * e->map.w + x];
-				gm_draw_img(&(e->screen), &(e->img_tab[n]), i * 16 + 1 + pos_x, j * 16 + 1 + pos_y);
+				if (under == 0)
+				{
+					n = e->map.back[y * e->map.w + x];
+					gm_draw_img(&(e->screen), &(e->img_tab[n]), i * 16 + 1 + pos_x, j * 16 + 1 + pos_y);
+					n = e->map.map[y * e->map.w + x];
+					if (e->img_tab[n].under == 0)
+						gm_draw_img(&(e->screen), &(e->img_tab[n]), i * 16 + 1 + pos_x, j * 16 + 1 + pos_y);
+				}
+				else
+				{
+					n = e->map.map[y * e->map.w + x];
+					if (e->img_tab[n].under == 1)
+						gm_draw_img(&(e->screen), &(e->img_tab[n]), i * 16 + 1 + pos_x, j * 16 + 1 + pos_y);
+				}
 			}
-			else
+			else if (under == 0)
 				gm_draw_img(&(e->screen), &(e->img_tab[0]), i * 16 + 1 + pos_x, j * 16 + 1 + pos_y);
 			y++;
 			j++;

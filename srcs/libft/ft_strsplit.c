@@ -6,7 +6,7 @@
 /*   By: realves <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/27 23:14:26 by realves           #+#    #+#             */
-/*   Updated: 2014/02/27 20:24:19 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/28 19:05:52 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ char	**ft_strsplit(char const *s, char c)
 			tab[size++] = ft_strsub(s, start, i - start);
 		}
 	}
-	tab[size] = '\0';
+	tab[size] = NULL;
 	return (tab);
 }

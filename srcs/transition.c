@@ -6,7 +6,7 @@
 /*   By: realves <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/23 20:18:16 by realves           #+#    #+#             */
-/*   Updated: 2014/03/27 02:14:06 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/28 21:49:03 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 static void	trans(t_env *e, char *img, int check, int time)
 {
-	gm_gene_map(e, 0, 0);
+	gm_gene_map(e, 0, 0, 0);
 	gm_draw_img(&(e->screen), &(e->red), e->red_posx, e->red_posy);
+	gm_gene_map(e, 0, 0, 1);
 	if (check == 1)
 	{
 		e->trans = gm_init_img(e, img, 336, 272);
@@ -152,56 +153,56 @@ static void	trans_3(t_env *e, int nb)
 static void	trans_4(t_env *e, int nb)
 {
 	e->red = gm_init_img(e, "./img/red/red_up_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans0.xpm", 1, 20000);
+	trans(e, "./img/transition/1/trans0.xpm", 1, 15000);
 	e->red = gm_init_img(e, "./img/red/red_right_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans0.xpm", 1, 20000);
+	trans(e, "./img/transition/1/trans0.xpm", 1, 15000);
 	e->red = gm_init_img(e, "./img/red/red_down_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans1.xpm", 1, 20000);
+	trans(e, "./img/transition/1/trans1.xpm", 1, 15000);
 	e->red = gm_init_img(e, "./img/red/red_left_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans1.xpm", 1, 20000);
+	trans(e, "./img/transition/1/trans1.xpm", 1, 15000);
 	e->red = gm_init_img(e, "./img/red/red_up_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans2.xpm", 1, 15000);
+	trans(e, "./img/transition/1/trans2.xpm", 1, 10000);
 	e->red = gm_init_img(e, "./img/red/red_right_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans2.xpm", 1, 15000);
+	trans(e, "./img/transition/1/trans2.xpm", 1, 10000);
 	e->red = gm_init_img(e, "./img/red/red_down_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans3.xpm", 1, 15000);
+	trans(e, "./img/transition/1/trans3.xpm", 1, 10000);
 	e->red = gm_init_img(e, "./img/red/red_left_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans3.xpm", 1, 15000);
+	trans(e, "./img/transition/1/trans3.xpm", 1, 10000);
 	e->red = gm_init_img(e, "./img/red/red_up_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans4.xpm", 1, 10000);
+	trans(e, "./img/transition/1/trans4.xpm", 1, 5000);
 	e->red = gm_init_img(e, "./img/red/red_right_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans4.xpm", 1, 10000);
+	trans(e, "./img/transition/1/trans4.xpm", 1, 5000);
 	e->red = gm_init_img(e, "./img/red/red_down_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans4.xpm", 1, 10000);
+	trans(e, "./img/transition/1/trans4.xpm", 1, 5000);
 	e->red = gm_init_img(e, "./img/red/red_left_1.xpm", 16, 32);
-	trans(e, "./img/transition/black.xpm", 1, 10000);
+	trans(e, "./img/transition/black.xpm", 1, 5000);
 	e->x = e->img_tab[nb].teleport_x;
 	e->y = e->img_tab[nb].teleport_y;
 	free(e->map.map);
 	free(e->map.back);
 	gm_init_map(e, e->img_tab[nb].teleport);
 	e->red = gm_init_img(e, "./img/red/red_up_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans4.xpm", 1, 10000);
+	trans(e, "./img/transition/1/trans4.xpm", 1, 5000);
 	e->red = gm_init_img(e, "./img/red/red_right_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans4.xpm", 1, 10000);
+	trans(e, "./img/transition/1/trans4.xpm", 1, 5000);
 	e->red = gm_init_img(e, "./img/red/red_down_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans4.xpm", 1, 10000);
+	trans(e, "./img/transition/1/trans4.xpm", 1, 5000);
 	e->red = gm_init_img(e, "./img/red/red_left_1.xpm", 16, 32);
+	trans(e, "./img/transition/1/trans3.xpm", 1, 5000);
+	e->red = gm_init_img(e, "./img/red/red_up_1.xpm", 16, 32);
 	trans(e, "./img/transition/1/trans3.xpm", 1, 10000);
-	e->red = gm_init_img(e, "./img/red/red_up_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans3.xpm", 1, 15000);
 	e->red = gm_init_img(e, "./img/red/red_right_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans2.xpm", 1, 15000);
+	trans(e, "./img/transition/1/trans2.xpm", 1, 10000);
 	e->red = gm_init_img(e, "./img/red/red_down_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans2.xpm", 1, 15000);
+	trans(e, "./img/transition/1/trans2.xpm", 1, 10000);
 	e->red = gm_init_img(e, "./img/red/red_left_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans1.xpm", 1, 15000);
+	trans(e, "./img/transition/1/trans1.xpm", 1, 10000);
 	e->red = gm_init_img(e, "./img/red/red_up_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans1.xpm", 1, 20000);
+	trans(e, "./img/transition/1/trans1.xpm", 1, 15000);
 	e->red = gm_init_img(e, "./img/red/red_right_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans0.xpm", 1, 20000);
+	trans(e, "./img/transition/1/trans0.xpm", 1, 15000);
 	e->red = gm_init_img(e, "./img/red/red_down_1.xpm", 16, 32);
-	trans(e, "./img/transition/1/trans0.xpm", 1, 20000);
+	trans(e, "./img/transition/1/trans0.xpm", 1, 15000);
 	if (e->img_tab[nb].teleport_sens == 1)
 		e->red = gm_init_img(e, "./img/red/red_up_1.xpm", 16, 32);
 	else if (e->img_tab[nb].teleport_sens == 2)

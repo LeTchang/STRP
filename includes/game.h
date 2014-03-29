@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:40:03 by realves           #+#    #+#             */
-/*   Updated: 2014/03/24 21:32:56 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/28 19:04:53 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void			gm_left(t_env *e);
 void			gm_right(t_env *e);
 void			gm_error(int nb, char *reason);
 void			gm_init_map(t_env *e, char *path);
-void			gm_gene_map(t_env *e, int pos_x, int pos_y);
+void			gm_gene_map(t_env *e, int pos_x, int pos_y, int under);
 
 /*
 **	Prototypes Utilities

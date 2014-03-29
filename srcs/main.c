@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 16:32:17 by realves           #+#    #+#             */
-/*   Updated: 2014/03/27 01:44:36 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/28 23:44:15 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,9 @@ static int		loop_hook(t_env *e)
 		gm_left(e);
 	if (e->right_arrow == 1)
 		gm_right(e);
-	gm_gene_map(e, 0, 0);
+	gm_gene_map(e, 0, 0, 0);
 	gm_draw_img(&(e->screen), &(e->red), e->red_posx, e->red_posy);
+	gm_gene_map(e, 0, 0, 1);
 	mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->screen.ptr, 0, 0);
 	usleep(5000);
 	return (0);
