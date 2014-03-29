@@ -6,7 +6,7 @@
 /*   By: realves <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/23 20:18:16 by realves           #+#    #+#             */
-/*   Updated: 2014/03/28 21:49:03 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/29 20:24:51 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 static void	trans(t_env *e, char *img, int check, int time)
 {
 	gm_gene_map(e, 0, 0, 0);
-	gm_draw_img(&(e->screen), &(e->red), e->red_posx, e->red_posy);
+	gm_draw_img(e, &(e->screen), &(e->red), e->red_posx, e->red_posy);
 	gm_gene_map(e, 0, 0, 1);
 	if (check == 1)
 	{
 		e->trans = gm_init_img(e, img, 336, 272);
-		gm_draw_img(&(e->screen), &(e->trans), 0, 0);
+		gm_draw_img(e, &(e->screen), &(e->trans), 0, 0);
 	}
 	mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->screen.ptr, 0, 0);
 	usleep(time);

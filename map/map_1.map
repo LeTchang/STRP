@@ -44,7 +44,7 @@
  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2
  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2
 
-0 ./img/tileset_misc.xpm 32 16
+0 ./img/tileset_misc.xpm 48 16
 1 ./img/tileset_base.xpm 32 32
 2 ./img/pokecenter.xpm 80 96
 ------------------------------------------------------------

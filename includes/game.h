@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:40:03 by realves           #+#    #+#             */
-/*   Updated: 2014/03/28 19:04:53 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/29 20:24:25 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <string.h>
+# include <sys/time.h>
 
 /*
 **  Include Local
@@ -77,10 +78,10 @@ void			ft_reverse(char *str);
 ** Prototypes Game
 */
 
-void			gm_pixel_put_img(t_img *img, int tab[5]);
-void			gm_draw_ratio(t_img *img, int tab[5]);
-void			gm_draw_img(t_img *screen, t_img *img, int x, int y);
-void			gm_draw_half(t_img *screen, t_img *img, int tab[4]);
+void			gm_pixel_put_img(t_env *e, t_img *img, int tab[5]);
+void			gm_draw_ratio(t_env *e, t_img *img, int tab[5]);
+void			gm_draw_img(t_env *e, t_img *screen, t_img *img, int x, int y);
+void			gm_draw_half(t_env *e, t_img *screen, t_img *img, int tab[4]);
 void			gm_draw_halfline(t_env *e, int sens, int nb_px);
 void			gm_trans(t_env *e, int nb);
 void			gm_up(t_env *e);
@@ -99,5 +100,6 @@ void			gm_putallarrow(t_env *e, int nb);
 void			gm_init_mlx(t_env *e);
 void			gm_init_screen(void *mlx, int width, int height, t_img *img);
 t_img			gm_init_img(t_env *env, char *path, int width, int height);
+double			get_time_ms();
 
 #endif /* !GAME_H */

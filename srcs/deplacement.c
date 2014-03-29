@@ -6,7 +6,7 @@
 /*   By: realves <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 21:16:58 by realves           #+#    #+#             */
-/*   Updated: 2014/03/29 01:17:28 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/29 20:26:54 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	walk(t_env *e, char *text, int x, int y, int sens, int px)
 	gm_gene_map(e, x, y, 0);
 	gm_draw_halfline(e, sens, px);
 	e->red = gm_init_img(e, text, 16, 32);
-	gm_draw_img(&(e->screen), &(e->red), e->red_posx, e->red_posy);
+	gm_draw_img(e, &(e->screen), &(e->red), e->red_posx, e->red_posy);
 	gm_gene_map(e, x, y, 1);
 	mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->screen.ptr, 0, 0);
 }
@@ -27,7 +27,7 @@ static void	run(t_env *e, char *text, int x, int y, int sens, int px, int redx, 
 	gm_gene_map(e, x, y, 0);
 	gm_draw_halfline(e, sens, px);
 	e->red = gm_init_img(e, text, 16, 32);
-	gm_draw_img(&(e->screen), &(e->red), redx, redy);
+	gm_draw_img(e, &(e->screen), &(e->red), redx, redy);
 	gm_gene_map(e, x, y, 1);
 	mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->screen.ptr, 0, 0);
 	usleep(10000);

@@ -6,13 +6,13 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/27 19:10:24 by realves           #+#    #+#             */
-/*   Updated: 2014/03/29 00:51:42 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/29 22:11:23 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/game.h"
 
-static void	draw_texture(t_img *tileset, t_img *img, int x, int y)
+static void	draw_texture(t_env *e, t_img *tileset, t_img *img, int x, int y)
 {
 	int		i;
 	int		j;
@@ -33,7 +33,7 @@ static void	draw_texture(t_img *tileset, t_img *img, int x, int y)
 			tab[2] = tileset->img[j * tileset->size_line + 4 * i + 2];
 			tab[3] = tileset->img[j * tileset->size_line + 4 * i + 1];
 			tab[4] = tileset->img[j * tileset->size_line + 4 * i];
-			gm_pixel_put_img(img, tab);
+			gm_pixel_put_img(e, img, tab);
 			i++;
 			k++;
 		}
@@ -59,9 +59,8 @@ static void	init_texture(t_env *e, char *line)
 	char		**split;
 
 	split = ft_strsplit(line, ' ');
-	printf("%s\n", split[0]);
 	gm_init_screen(e->mlx_ptr, 16, 16, &(e->img_tab[ft_atoi(split[0])]));
-	draw_texture(&(e->tileset[ft_atoi(split[1])]),
+	draw_texture(e, &(e->tileset[ft_atoi(split[1])]),
 			&(e->img_tab[ft_atoi(split[0])]), ft_atoi(split[2]),
 			ft_atoi(split[3]));
 	e->img_tab[ft_atoi(split[0])].solid = ft_atoi(split[4]);
@@ -87,6 +86,7 @@ static void	init_tileset(t_env *e, char *line)
 	split = ft_strsplit(line, ' ');
 	e->tileset[ft_atoi(split[0])] = gm_init_img(e, split[1],
 			ft_atoi(split[2]), ft_atoi(split[3]));
+	free_split(split);
 	free(split);
 }
 

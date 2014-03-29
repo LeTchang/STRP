@@ -1,24 +1,25 @@
 /* XPM */
 static char *tilesetmisc[] = {
 /* columns rows colors chars-per-pixel */
-"32 16 2 1",
+"48 16 3 1",
 "  c #000000",
 ". c #FF00FF",
+"X c #FFFFFF",
 /* pixels */
-"                ................",
-"                ................",
-"                ................",
-"                ................",
-"                ................",
-"                ................",
-"                ................",
-"                ................",
-"                ................",
-"                ................",
-"                ................",
-"                ................",
-"                ................",
-"                ................",
-"                ................",
-"                ................"
+"                ................XXXXXXXXXXXXXXXX",
+"                ................XXXXXXXXXXXXXXXX",
+"                ................XXXXXXXXXXXXXXXX",
+"                ................XXXXXXXXXXXXXXXX",
+"                ................XXXXXXXXXXXXXXXX",
+"                ................XXXXXXXXXXXXXXXX",
+"                ................XXXXXXXXXXXXXXXX",
+"                ................XXXXXXXXXXXXXXXX",
+"                ................XXXXXXXXXXXXXXXX",
+"                ................XXXXXXXXXXXXXXXX",
+"                ................XXXXXXXXXXXXXXXX",
+"                ................XXXXXXXXXXXXXXXX",
+"                ................XXXXXXXXXXXXXXXX",
+"                ................XXXXXXXXXXXXXXXX",
+"                ................XXXXXXXXXXXXXXXX",
+"                ................XXXXXXXXXXXXXXXX"
 };

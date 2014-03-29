@@ -6,13 +6,13 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 14:06:07 by realves           #+#    #+#             */
-/*   Updated: 2014/03/24 22:34:43 by realves          ###   ########.fr       */
+/*   Updated: 2014/03/29 21:28:39 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/game.h"
 
-void			gm_pixel_put_img(t_img *img, int tab[5])
+void			gm_pixel_put_img(t_env *e, t_img *img, int tab[5])
 {
 	if (tab[0] < WIDTH && tab[1] < HEIGHT && tab[0] >= 0 && tab[1] >= 0)
 	{
@@ -22,7 +22,7 @@ void			gm_pixel_put_img(t_img *img, int tab[5])
 	}
 }
 
-void			gm_draw_ratio(t_img *img, int tab[5])
+void			gm_draw_ratio(t_env *e, t_img *img, int tab[5])
 {
 	int		l;
 	int		k;
@@ -39,7 +39,7 @@ void			gm_draw_ratio(t_img *img, int tab[5])
 		{
 			tab[0] = i + l;
 			tab[1] = j + k;
-			gm_pixel_put_img(img, tab);
+			gm_pixel_put_img(e, img, tab);
 			k++;
 		}
 		l++;
@@ -54,7 +54,7 @@ static int	test_transpa(int red, int green, int blue)
 	return (0);
 }
 
-void		gm_draw_img(t_img *screen, t_img *img, int x, int y)
+void		gm_draw_img(t_env *e, t_img *screen, t_img *img, int x, int y)
 {
 	int		t[5];
 	int		i;
@@ -72,14 +72,14 @@ void		gm_draw_img(t_img *screen, t_img *img, int x, int y)
 			t[3] = img->img[i * img->size_line + 4 * j + 1];
 			t[4] = img->img[i * img->size_line + 4 * j];
 			if (!test_transpa(t[2], t[3], t[4]))
-				gm_draw_ratio(screen, t);
+				gm_draw_ratio(e, screen, t);
 			j++;
 		}
 		i++;
 	}
 }
 
-void		gm_draw_half(t_img *screen, t_img *img, int tab[4])
+void		gm_draw_half(t_env *e, t_img *screen, t_img *img, int tab[4])
 {
 	int		t[5];
 	int		val[5];
@@ -119,7 +119,7 @@ void		gm_draw_half(t_img *screen, t_img *img, int tab[4])
 			t[3] = img->img[val[1] * img->size_line + 4 * val[0] + 1];
 			t[4] = img->img[val[1] * img->size_line + 4 * val[0]];
 			if (!test_transpa(t[2], t[3], t[4]))
-				gm_draw_ratio(screen, t);
+				gm_draw_ratio(e, screen, t);
 			val[0]++;
 		}
 		val[1]++;
