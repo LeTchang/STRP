@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 16:32:17 by realves           #+#    #+#             */
-/*   Updated: 2014/03/29 22:11:25 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/04 01:55:34 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	key_press_event(int keycode, t_env *e)
 		e->right_arrow = 1;
 	}
 	if (keycode == ESCAPE)
-		exit(0);
+		gm_exit(e, 0);
 	if (keycode == SPACE)
 		e->sprint = 1;
 	return (0);

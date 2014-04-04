@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:40:03 by realves           #+#    #+#             */
-/*   Updated: 2014/03/29 20:24:25 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/04 01:53:24 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int				get_next_line(int fd, char **line);
 int				ft_strlen(const char *str);
 int				ft_atoi(const char *str);
 char			*ft_itoa(int n);
+char			*ft_strncpy(char *s1, const char *s2, size_t n);
 char			*ft_strcpy(char *s1, const char *s2);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strcat(char *s1, const char *s2);
@@ -73,6 +74,7 @@ char			*ft_strdup(const char *s1);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			**ft_strsplit(char const *s, char c);
 void			ft_reverse(char *str);
+void			ft_strdel(char **as);
 
 /*
 ** Prototypes Game
@@ -91,6 +93,7 @@ void			gm_right(t_env *e);
 void			gm_error(int nb, char *reason);
 void			gm_init_map(t_env *e, char *path);
 void			gm_gene_map(t_env *e, int pos_x, int pos_y, int under);
+void			gm_exit(t_env *e, int nb);
 
 /*
 **	Prototypes Utilities

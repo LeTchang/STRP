@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 16:08:03 by realves           #+#    #+#             */
-/*   Updated: 2014/03/25 20:21:20 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/03 22:20:12 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,22 @@ void	gm_init_screen(void *mlx, int width, int height, t_img *img)
 
 void	gm_init_mlx(t_env *e)
 {
+	int	i;
+
+	e->map.name = NULL;
+	i = NB_TEXTURE;
+	while (i >= 0)
+	{
+		e->img_tab[i].teleport = NULL;
+		e->img_tab[i].ptr = NULL;
+		i--;
+	}
+	i = NB_TILESET;
+	while (i >= 0)
+	{
+		e->img_tab[i].ptr = NULL;
+		i--;
+	}
 	e->mlx_ptr = mlx_init();
 	e->win_ptr = mlx_new_window(e->mlx_ptr, WIDTH, HEIGHT, FEN_NAME);
 	gm_init_screen(e->mlx_ptr, WIDTH, HEIGHT, &(e->screen));
