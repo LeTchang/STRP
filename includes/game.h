@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:40:03 by realves           #+#    #+#             */
-/*   Updated: 2014/04/04 01:53:24 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/04 22:36:03 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 # include "struct_env.h"
 # include "struct_img.h"
 # include "struct_map.h"
+# include "struct_time.h"
+# include "struct_anim.h"
 
 /*
 **  Define
@@ -75,6 +77,9 @@ char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			**ft_strsplit(char const *s, char c);
 void			ft_reverse(char *str);
 void			ft_strdel(char **as);
+void			ft_lstadd(t_anim **fanim, t_anim *new);
+void			ft_lstdel(t_anim **fanim);
+t_anim			*ft_lstnew(int tick, int nb_tileset, int nb_img, int x, int y);
 
 /*
 ** Prototypes Game

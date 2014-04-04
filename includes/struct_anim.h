@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_map.h                                       :+:      :+:    :+:   */
+/*   struct_anim.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
+/*   By: realves <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/27 19:03:53 by realves           #+#    #+#             */
-/*   Updated: 2014/04/04 22:40:37 by realves          ###   ########.fr       */
+/*   Created: 2014/04/04 22:14:22 by realves           #+#    #+#             */
+/*   Updated: 2014/04/04 22:26:21 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_MAP_H
-# define STRUCT_MAP_H
+#ifndef STRUCT_ANIM_H
+# define STRUCT_ANIM_H
 
-# include "game.h"
-# include "struct_anim.h"
-
-typedef struct		s_map
+typedef struct			s_anim
 {
-	int				w;
-	int				h;
-	int				*map;
-	int				*back;
-	char			*name;
-	t_anim			*fanim;
-}					t_map;
+	int					tick;
+	int					check;
+	int					nb_tileset;
+	int					nb_img;
+	int					x;
+	int					y;
+	struct s_anim		*next;
+}						t_anim;
 
-#endif /* !STRUCT_MAP_H */
+#endif /* !STRUCT_ANIM_H */

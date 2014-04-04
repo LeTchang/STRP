@@ -6,7 +6,7 @@
 /*   By: realves <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 21:16:58 by realves           #+#    #+#             */
-/*   Updated: 2014/04/04 02:51:28 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/04 23:07:16 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void		gm_up(t_env *e)
 	int	nb;
 	int	nb2;
 
-	if (e->x >= 0 && e->y - 1 >= 0 && e->x < e->map.w && e->y - 1 < e->map.h)
+	if (e->x >= 0 && e->y - 1 >= 0 && e->x < e->map.w && e->y - 1 < e->map.h
+			&& (e->direction == 1 || e->sprint == 1 || e->sprint == 2))
 	{
 		nb = e->map.map[(e->y - 1) * e->map.w + e->x];
 		nb2 = e->map.back[(e->y - 1) * e->map.w + e->x];
@@ -87,6 +88,9 @@ void		gm_up(t_env *e)
 			e->y -= 1;
 		}
 	}
+	if (e->direction != 1 && e->sprint != 1 && e->sprint != 2)
+		usleep(20000);
+	e->direction = 1;
 	if (e->red.ptr != NULL)
 		mlx_destroy_image(e->mlx_ptr, e->red.ptr);
 	e->red = gm_init_img(e, "./img/red/red_up_1.xpm", 16, 32);
@@ -97,7 +101,8 @@ void	gm_down(t_env *e)
 	int	nb;
 	int	nb2;
 
-	if (e->x >= 0 && e->y + 1 >= 0 && e->x < e->map.w && e->y + 1 < e->map.h)
+	if (e->x >= 0 && e->y + 1 >= 0 && e->x < e->map.w && e->y + 1 < e->map.h
+			&& (e->direction == 3 || e->sprint == 1 || e->sprint == 2))
 	{
 		nb = e->map.map[(e->y + 1) * e->map.w + e->x];
 		nb2 = e->map.back[(e->y + 1) * e->map.w + e->x];
@@ -142,6 +147,9 @@ void	gm_down(t_env *e)
 			e->y += 1;
 		}
 	}
+	if (e->direction != 3 && e->sprint != 1 && e->sprint != 2)
+		usleep(20000);
+	e->direction = 3;
 	if (e->red.ptr != NULL)
 		mlx_destroy_image(e->mlx_ptr, e->red.ptr);
 	e->red = gm_init_img(e, "./img/red/red_down_1.xpm", 16, 32);
@@ -152,7 +160,8 @@ void	gm_left(t_env *e)
 	int	nb;
 	int	nb2;
 
-	if (e->x - 1 >= 0 && e->y >= 0 && e->x - 1 < e->map.w && e->y < e->map.h)
+	if (e->x - 1 >= 0 && e->y >= 0 && e->x - 1 < e->map.w && e->y < e->map.h
+			&& (e->direction == 2 || e->sprint == 1 || e->sprint == 2))
 	{
 		nb = e->map.map[e->y * e->map.w + (e->x - 1)];
 		nb2 = e->map.back[e->y * e->map.w + (e->x - 1)];
@@ -197,6 +206,9 @@ void	gm_left(t_env *e)
 			e->x -= 1;
 		}
 	}
+	if (e->direction != 2 && e->sprint != 1 && e->sprint != 2)
+		usleep(20000);
+	e->direction = 2;
 	if (e->red.ptr != NULL)
 		mlx_destroy_image(e->mlx_ptr, e->red.ptr);
 	e->red = gm_init_img(e, "./img/red/red_left_1.xpm", 16, 32);
@@ -207,7 +219,8 @@ void	gm_right(t_env *e)
 	int	nb;
 	int	nb2;
 
-	if (e->x + 1 >= 0 && e->y >= 0 && e->x + 1 < e->map.w && e->y < e->map.h)
+	if (e->x + 1 >= 0 && e->y >= 0 && e->x + 1 < e->map.w && e->y < e->map.h
+			&& (e->direction == 4 || e->sprint == 1 || e->sprint == 2))
 	{
 		nb = e->map.map[e->y * e->map.w + (e->x + 1)];
 		nb2 = e->map.back[e->y * e->map.w + (e->x + 1)];
@@ -252,6 +265,9 @@ void	gm_right(t_env *e)
 			e->x += 1;
 		}
 	}
+	if (e->direction != 4 && e->sprint != 1 && e->sprint != 2)
+		usleep(20000);
+	e->direction = 4;
 	if (e->red.ptr != NULL)
 		mlx_destroy_image(e->mlx_ptr, e->red.ptr);
 	e->red = gm_init_img(e, "./img/red/red_right_1.xpm", 16, 32);

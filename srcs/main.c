@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 16:32:17 by realves           #+#    #+#             */
-/*   Updated: 2014/04/04 01:55:34 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/04 23:14:49 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ static int		loop_hook(t_env *e)
 	gm_draw_img(e, &(e->screen), &(e->red), e->red_posx, e->red_posy);
 	gm_gene_map(e, 0, 0, 1);
 	mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->screen.ptr, 0, 0);
-	if (e->time + 33.3 > get_time_ms())
-		usleep(e->time + 33.3 - get_time_ms());
-	e->time = get_time_ms();
+	if (e->time.time + 33.3 > get_time_ms())
+		usleep(e->time.time + 33.3 - get_time_ms());
+	e->time.time = get_time_ms();
 	return (0);
 }
 
@@ -89,14 +89,14 @@ int		main()
 	e.red_posy = (HEIGHT / RATIO) / 2 - 14;
 	e.x = 2;
 	e.y = 2;
-	e.sens = 0;
+	e.direction = 3;
 	e.sprint = 0;
 	e.red_modif = 0;
 	e.blue_modif = 0;
 	e.green_modif = 0;
-	e.time = get_time_ms();
+	e.time.time = get_time_ms();
 	gm_init_mlx(&e);
-	e.red = gm_init_img(&e, "./img/red/red_up_1.xpm", 16, 32);
+	e.red = gm_init_img(&e, "./img/red/red_down_1.xpm", 16, 32);
 	gm_init_map(&e, "./map/map_1.map");
 	mlx_hook(e.win_ptr, 2, 1, &key_press_event, &e);
 	mlx_hook(e.win_ptr, 3, 2, &key_release_event, &e);
