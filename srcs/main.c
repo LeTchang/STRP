@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 16:32:17 by realves           #+#    #+#             */
-/*   Updated: 2014/04/04 23:14:49 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/05 19:18:45 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ static int		loop_hook(t_env *e)
 	gm_draw_img(e, &(e->screen), &(e->red), e->red_posx, e->red_posy);
 	gm_gene_map(e, 0, 0, 1);
 	mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->screen.ptr, 0, 0);
+	gm_anim_timer(e);
 	if (e->time.time + 33.3 > get_time_ms())
 		usleep(e->time.time + 33.3 - get_time_ms());
 	e->time.time = get_time_ms();
@@ -95,6 +96,7 @@ int		main()
 	e.blue_modif = 0;
 	e.green_modif = 0;
 	e.time.time = get_time_ms();
+	e.time.time_frame = get_time_ms();
 	gm_init_mlx(&e);
 	e.red = gm_init_img(&e, "./img/red/red_down_1.xpm", 16, 32);
 	gm_init_map(&e, "./map/map_1.map");

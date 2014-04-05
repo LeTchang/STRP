@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: realves <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/05 04:59:38 by realves           #+#    #+#             */
-/*   Updated: 2014/04/04 22:41:50 by realves          ###   ########.fr       */
+/*   Created: 2013/12/05 00:23:27 by realves           #+#    #+#             */
+/*   Updated: 2014/04/05 18:20:06 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/game.h"
 
-void		ft_lstadd(t_anim **fanim, t_anim *new)
+t_anim		*ft_animnew(int tick, int nb_img, int nb_tileset, int x, int y)
 {
-	if (*fanim == NULL)
-		*fanim = new;
-	else
-	{
-		new->next = *fanim;
-		*fanim = new;
-	}
+	t_anim	*tmp;
+
+	tmp = malloc(sizeof(t_anim));
+	tmp->tick = tick;
+	tmp->check = 0;
+	tmp->nb_tileset = nb_tileset;
+	tmp->nb_img = nb_img;
+	tmp->x = x;
+	tmp->y = y;
+	tmp->next = NULL;
+	return (tmp);
 }

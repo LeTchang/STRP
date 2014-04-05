@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:40:03 by realves           #+#    #+#             */
-/*   Updated: 2014/04/04 22:36:03 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/05 18:49:27 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			**ft_strsplit(char const *s, char c);
 void			ft_reverse(char *str);
 void			ft_strdel(char **as);
-void			ft_lstadd(t_anim **fanim, t_anim *new);
-void			ft_lstdel(t_anim **fanim);
-t_anim			*ft_lstnew(int tick, int nb_tileset, int nb_img, int x, int y);
+void			ft_animadd(t_anim **fanim, t_anim *new);
+void			ft_animdel(t_anim **fanim);
+t_anim			*ft_animnew(int tick, int nb_img, int nb_tileset, int x, int y);
 
 /*
 ** Prototypes Game
@@ -99,6 +99,7 @@ void			gm_error(int nb, char *reason);
 void			gm_init_map(t_env *e, char *path);
 void			gm_gene_map(t_env *e, int pos_x, int pos_y, int under);
 void			gm_exit(t_env *e, int nb);
+void			gm_anim_timer(t_env *e);
 
 /*
 **	Prototypes Utilities
@@ -107,6 +108,7 @@ void			gm_exit(t_env *e, int nb);
 void			gm_putallarrow(t_env *e, int nb);
 void			gm_init_mlx(t_env *e);
 void			gm_init_screen(void *mlx, int width, int height, t_img *img);
+void			gm_draw_texture(t_env *e, t_img *tileset, t_img *img, int x, int y);
 t_img			gm_init_img(t_env *env, char *path, int width, int height);
 double			get_time_ms();
 

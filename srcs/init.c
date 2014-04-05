@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 16:08:03 by realves           #+#    #+#             */
-/*   Updated: 2014/04/04 22:36:56 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/05 18:50:13 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	gm_init_mlx(t_env *e)
 		i--;
 	}
 	e->map.fanim = NULL;
+	e->time.check = 0;
 	e->mlx_ptr = mlx_init();
 	e->win_ptr = mlx_new_window(e->mlx_ptr, WIDTH, HEIGHT, FEN_NAME);
 	gm_init_screen(e->mlx_ptr, WIDTH, HEIGHT, &(e->screen));

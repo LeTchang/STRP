@@ -6,13 +6,13 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/27 19:10:24 by realves           #+#    #+#             */
-/*   Updated: 2014/04/04 01:31:54 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/05 21:29:16 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/game.h"
 
-static void	draw_texture(t_env *e, t_img *tileset, t_img *img, int x, int y)
+void	gm_draw_texture(t_env *e, t_img *tileset, t_img *img, int x, int y)
 {
 	int		i;
 	int		j;
@@ -54,6 +54,17 @@ static void	free_split(char **split)
 	}
 }
 
+static void	init_anim(t_env *e, char *line, int *check)
+{
+	char	**split;
+
+	split = ft_strsplit(line, ' ');
+	ft_animadd(&(e->map.fanim), ft_animnew(ft_atoi(split[0]), ft_atoi(split[1]),
+				ft_atoi(split[2]), ft_atoi(split[3]), ft_atoi(split[4])));
+	free_split(split);
+	free(split);
+}
+
 static void	init_texture(t_env *e, char *line)
 {
 	char		**split;
@@ -64,7 +75,7 @@ static void	init_texture(t_env *e, char *line)
 	if (e->img_tab[nb].ptr != NULL)
 		mlx_destroy_image(e->mlx_ptr, e->img_tab[nb].ptr);
 	gm_init_screen(e->mlx_ptr, 16, 16, &(e->img_tab[nb]));
-	draw_texture(e, &(e->tileset[ft_atoi(split[1])]),
+	gm_draw_texture(e, &(e->tileset[ft_atoi(split[1])]),
 			&(e->img_tab[nb]), ft_atoi(split[2]),
 			ft_atoi(split[3]));
 	e->img_tab[nb].solid = ft_atoi(split[4]);
@@ -162,6 +173,8 @@ void		gm_init_map(t_env *e, char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		gm_error(4, "Error in map initialisation.");
+	if (e->map.fanim != NULL)
+		ft_animdel(&(e->map.fanim));
 	while (get_next_line(fd, &line))
 	{
 		if (line_nb < 3)
@@ -185,11 +198,13 @@ void		gm_init_map(t_env *e, char *path)
 		else if (line_nb >= e->map.h * 2 + 6)
 		{
 			if (line[0] == '-')
-				check = 1;
+				check++;
 			else if (check == 0)
 				init_tileset(e, line);
-			else
+			else if (check == 1)
 				init_texture(e, line);
+			else
+				init_anim(e, line, &check);
 		}
 		line_nb++;
 		free(line);
