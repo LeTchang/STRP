@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:40:03 by realves           #+#    #+#             */
-/*   Updated: 2014/04/05 18:49:27 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/06 18:08:37 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,6 @@
 # define TRANSPA_R 255
 # define TRANSPA_G 0
 # define TRANSPA_B 255
-
-# define WIDTH 1280
-# define HEIGHT 1024
-# define RATIO 4
 
 # define FEN_NAME "Adventure Ballz"
 

@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:54:28 by realves           #+#    #+#             */
-/*   Updated: 2014/04/04 23:14:51 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/06 23:39:43 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,27 @@ typedef struct			s_env
 	t_img				screen;
 	t_img				trans;
 	t_img				red;
+	t_img				tmp;
 	t_img				tileset[NB_TILESET];
 	t_img				img_tab[NB_TEXTURE];
 	t_map				map;
 	t_time				time;
 	void				*mlx_ptr;
 	void				*win_ptr;
+	int					win_width;
+	int					win_height;
+	int					win_ratio;
 	int					red_posx;
 	int					red_posy;
 	int					up_arrow;
 	int					down_arrow;
 	int					left_arrow;
 	int					right_arrow;
+	int					in_menu;
 	int					x;
 	int					y;
 	int					direction;
 	int					sprint;
-	int					red_modif;
-	int					blue_modif;
-	int					green_modif;
 }						t_env;
 
 #endif /* !STRUCT_ENV_H */

@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 16:08:03 by realves           #+#    #+#             */
-/*   Updated: 2014/04/05 18:50:13 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/06 23:46:40 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,42 @@ void	gm_init_mlx(t_env *e)
 	}
 	e->map.fanim = NULL;
 	e->time.check = 0;
+	e->x = 2;
+	e->y = 2;
+	e->direction = 3;
+	e->sprint = 0;
+	e->time.time = get_time_ms();
+	e->time.time_frame = get_time_ms();
 	e->mlx_ptr = mlx_init();
-	e->win_ptr = mlx_new_window(e->mlx_ptr, WIDTH, HEIGHT, FEN_NAME);
-	gm_init_screen(e->mlx_ptr, WIDTH, HEIGHT, &(e->screen));
+	e->win_ptr = mlx_new_window(e->mlx_ptr, e->win_width, e->win_height, FEN_NAME);
+	gm_init_screen(e->mlx_ptr, e->win_width, e->win_height, &(e->screen));
 	mlx_do_key_autorepeatoff(e->mlx_ptr);
+}
+
+void	gm_init(t_env *e, int check)
+{
+	int	i;
+
+	e->map.name = NULL;
+	i = NB_TEXTURE;
+	while (i >= 0)
+	{
+		e->img_tab[i].teleport = NULL;
+		e->img_tab[i].ptr = NULL;
+		i--;
+	}
+	i = NB_TILESET;
+	while (i >= 0)
+	{
+		e->img_tab[i].ptr = NULL;
+		i--;
+	}
+	e->map.fanim = NULL;
+	e->time.check = 0;
+	e->x = 2;
+	e->y = 2;
+	e->direction = 3;
+	e->sprint = 0;
+	e->time.time = get_time_ms();
+	e->time.time_frame = get_time_ms();
 }

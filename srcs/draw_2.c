@@ -6,7 +6,7 @@
 /*   By: realves <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 20:30:04 by realves           #+#    #+#             */
-/*   Updated: 2014/03/29 20:26:31 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/06 18:11:35 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void		gm_draw_halfline(t_env *e, int sens, int nb_px)
 		while (x < e->x + 10)
 		{
 			tab[0] = i * 16 + 1;
-			tab[1] = (HEIGHT / RATIO) - nb_px + 1;
+			tab[1] = (e->win_height / e->win_ratio) - nb_px + 1;
 			if (x >= 0 && e->y + 8 >= 0 && x < e->map.w && e->y + 8 < e->map.h)
 			{
 				n = e->map.back[(e->y + 8) * e->map.w + x];
@@ -90,7 +90,7 @@ void		gm_draw_halfline(t_env *e, int sens, int nb_px)
 		tab[2] = 2;
 		while (x < e->y + 8)
 		{
-			tab[0] = (WIDTH / RATIO) - nb_px + 1;
+			tab[0] = (e->win_width / e->win_ratio) - nb_px + 1;
 			tab[1] = i * 16 + 1;
 			if (e->x + 10 >= 0 && x >= 0 && e->x + 10 < e->map.w && x < e->map.h)
 			{

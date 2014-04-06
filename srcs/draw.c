@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 14:06:07 by realves           #+#    #+#             */
-/*   Updated: 2014/03/29 21:28:39 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/06 18:10:00 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void			gm_pixel_put_img(t_env *e, t_img *img, int tab[5])
 {
-	if (tab[0] < WIDTH && tab[1] < HEIGHT && tab[0] >= 0 && tab[1] >= 0)
+	if (tab[0] < e->win_width && tab[1] < e->win_height && tab[0] >= 0 && tab[1] >= 0)
 	{
 		img->img[tab[1] * img->size_line + img->bpp * tab[0]] = tab[4];
 		img->img[tab[1] * img->size_line + img->bpp * tab[0] + 1] = tab[3];
@@ -29,13 +29,13 @@ void			gm_draw_ratio(t_env *e, t_img *img, int tab[5])
 	int		i;
 	int		j;
 
-	i = tab[0] * RATIO - RATIO;
-	j = tab[1] * RATIO - RATIO;
+	i = tab[0] * e->win_ratio - e->win_ratio;
+	j = tab[1] * e->win_ratio - e->win_ratio;
 	l = 0;
-	while (l < RATIO)
+	while (l < e->win_ratio)
 	{
 		k = 0;
-		while (k < RATIO)
+		while (k < e->win_ratio)
 		{
 			tab[0] = i + l;
 			tab[1] = j + k;

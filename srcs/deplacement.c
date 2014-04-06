@@ -6,7 +6,7 @@
 /*   By: realves <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 21:16:58 by realves           #+#    #+#             */
-/*   Updated: 2014/04/05 19:18:12 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/06 19:42:35 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void		gm_up(t_env *e)
 				walk(e, "./img/red/red_up_1.xpm", 0, 14, 1, 14);
 				gm_anim_timer(e);
 				walk(e, "./img/red/red_up_1.xpm", 0, 15, 1, 15);
+				walk(e, "./img/red/red_up_1.xpm", 0, 16, 1, 16);
 			}
 			e->y -= 1;
 		}
@@ -165,6 +166,7 @@ void	gm_down(t_env *e)
 				walk(e, "./img/red/red_down_1.xpm", 0, -14, 3, 14);
 				gm_anim_timer(e);
 				walk(e, "./img/red/red_down_1.xpm", 0, -15, 3, 15);
+				walk(e, "./img/red/red_down_1.xpm", 0, -16, 3, 16);
 			}
 			e->y += 1;
 		}
@@ -235,6 +237,7 @@ void	gm_left(t_env *e)
 				walk(e, "./img/red/red_left_1.xpm", 14, 0, 2, 14);
 				gm_anim_timer(e);
 				walk(e, "./img/red/red_left_1.xpm", 15, 0, 2, 15);
+				walk(e, "./img/red/red_left_1.xpm", 16, 0, 2, 16);
 			}
 			e->x -= 1;
 		}
@@ -305,6 +308,7 @@ void	gm_right(t_env *e)
 				walk(e, "./img/red/red_right_1.xpm", -14, 0, 4, 14);
 				gm_anim_timer(e);
 				walk(e, "./img/red/red_right_1.xpm", -15, 0, 4, 15);
+				walk(e, "./img/red/red_right_1.xpm", -16, 0, 4, 16);
 			}
 			e->x += 1;
 		}
