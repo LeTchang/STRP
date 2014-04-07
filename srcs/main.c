@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 16:32:17 by realves           #+#    #+#             */
-/*   Updated: 2014/04/06 23:46:38 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/07 20:17:18 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 
 static int	mouse_event(int button, int x, int y, t_env *e)
 {
-	printf("Button : %d\n%d , %d\n\n", button, x, y);
+	if (e->menu.current_menu == 1)
+	{
+		printf("Button : %d\n%d , %d\n\n", button, x, y);
+	}
 	return (0);
 }
 
 static int	key_press_event(int keycode, t_env *e)
 {
-	if (e->in_menu == 1)
+	if (e->menu.current_menu == 1)
 	{
 	}
 	else
@@ -73,7 +76,7 @@ static int		loop_hook(t_env *e)
 	int			nb;
 
 
-	if (e->in_menu == 1)
+	if (e->menu.current_menu == 1)
 	{
 	}
 	else
@@ -105,12 +108,12 @@ int		main()
 {
 	t_env	e;
 
-	e.in_menu = 1;
-	e.win_width = 400;
-	e.win_height = 400;
-/*	e.win_ratio = 4;
+	e.menu.current_menu = 0;
+	e.win_width = 1280;
+	e.win_height = 1024;
+	e.win_ratio = 4;
 	e.red_posx = (e.win_width / e.win_ratio) / 2 + 1;
-	e.red_posy = (e.win_height / e.win_ratio) / 2 - 14;*/
+	e.red_posy = (e.win_height / e.win_ratio) / 2 - 14;
 	gm_init_mlx(&e);
 	e.red = gm_init_img(&e, "./img/red/red_down_1.xpm", 16, 32);
 	gm_init_map(&e, "./map/first.map");

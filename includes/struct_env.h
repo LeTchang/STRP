@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:54:28 by realves           #+#    #+#             */
-/*   Updated: 2014/04/06 23:39:43 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/07 20:07:33 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "struct_map.h"
 # include "struct_time.h"
 # include "struct_anim.h"
+# include "struct_menu.h"
 
 # define NB_TILESET 10
 # define NB_TEXTURE 1000
@@ -32,6 +33,7 @@ typedef struct			s_env
 	t_img				img_tab[NB_TEXTURE];
 	t_map				map;
 	t_time				time;
+	t_menu				menu;
 	void				*mlx_ptr;
 	void				*win_ptr;
 	int					win_width;
@@ -43,7 +45,6 @@ typedef struct			s_env
 	int					down_arrow;
 	int					left_arrow;
 	int					right_arrow;
-	int					in_menu;
 	int					x;
 	int					y;
 	int					direction;
