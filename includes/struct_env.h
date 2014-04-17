@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:54:28 by realves           #+#    #+#             */
-/*   Updated: 2014/04/07 20:07:33 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/14 14:03:12 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct			s_env
 	t_img				trans;
 	t_img				red;
 	t_img				tmp;
+	t_img				tmp2;
 	t_img				tileset[NB_TILESET];
 	t_img				img_tab[NB_TEXTURE];
 	t_map				map;

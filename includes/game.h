@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:40:03 by realves           #+#    #+#             */
-/*   Updated: 2014/04/06 18:08:37 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/14 16:26:59 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # define DOWN 65364
 # define LEFT 65361
 # define RIGHT 65363
+# define ENTER 65293
 
 # define TRANSPA_R 255
 # define TRANSPA_G 0

@@ -6,7 +6,7 @@
 /*   By: realves <realves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 16:08:03 by realves           #+#    #+#             */
-/*   Updated: 2014/04/06 23:46:40 by realves          ###   ########.fr       */
+/*   Updated: 2014/04/17 21:03:44 by realves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void	gm_init(t_env *e, int check)
 		i--;
 	}
 	e->map.fanim = NULL;
+	e->tmp.ptr = NULL;
+	e->tmp2.ptr = NULL;
 	e->time.check = 0;
 	e->x = 2;
 	e->y = 2;
